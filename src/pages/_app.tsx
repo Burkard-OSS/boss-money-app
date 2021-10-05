@@ -10,9 +10,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <footer className="absolute bottom-0 w-full p-5 bg-gray-700 text-white text-center">
         <span className="text-gray-400 text-sm">
           <a href="https://github.com/Burkard-OSS/boss-money-app">
-            Open Source project
-          </a>{" "}
-          created for the 2021 Hacktoberfest.
+            Open Source project created for the 2021 Hacktoberfest.
+          </a>
         </span>
       </footer>
     </div>
