@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Dropdown from "../components/dropdown";
 import Navigation from "../components/navigation";
 
 const Home: NextPage = () => {
@@ -12,8 +13,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      <div>
-        <h2 className="p-5 text-lg">Welcome User</h2>
+      <div className="m-5">
+        <h2 className="py-3 text-lg">Welcome User</h2>
+        <Dropdown />
 
       </div>
     </>
