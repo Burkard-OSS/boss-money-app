@@ -16,7 +16,6 @@ const Home: NextPage = () => {
       <div className="m-5">
         <h2 className="py-3 text-lg">Welcome User</h2>
         <Dropdown />
-
       </div>
     </>
   );
