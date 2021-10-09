@@ -1,3 +1,11 @@
+# Boss Money App
+
+Open source budgeting app made during Octoberfest 2021 🎃.
+This project is open to ideas and contributions. 
+Feel free to reach out with any questions. 
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
