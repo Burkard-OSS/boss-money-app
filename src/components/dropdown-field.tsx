@@ -3,7 +3,7 @@ import React from "react";
 const DropdownField = ({
   item
 }: {
-  item: any
+  item: {title: string, price: number}
 }) => {
   return (
     <div className="p-2">

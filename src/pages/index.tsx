@@ -1,8 +1,23 @@
 import type { NextPage } from "next";
+import dynamic from 'next/dynamic';
 import Head from "next/head";
 import Image from "next/image";
-import Dropdown from "../components/dropdown";
 import Navigation from "../components/navigation";
+
+const Dropdown = dynamic(() => import('../components/dropdown'));
+const DropdownField = dynamic(() => import('../components/dropdown-field'));
+
+
+const data = [
+  {
+    title: "item1",
+    price: 8000,
+  },
+  {
+    title: "item2",
+    price: 8500,
+  },
+]
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +30,9 @@ const Home: NextPage = () => {
       <Navigation />
       <div className="m-5">
         <h2 className="py-3 text-lg">Welcome User</h2>
-        <Dropdown />
+        <Dropdown title="Income">
+          {data.map((item) => <DropdownField item={item} key={item.title} />)}
+        </Dropdown>
       </div>
     </>
   );

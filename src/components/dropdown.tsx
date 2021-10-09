@@ -1,6 +1,7 @@
 import React from 'react';
+import DropdownField from './dropdown-field';
 
-const Dropdown = ({title, children}: {title: string, children: any}) => {
+const Dropdown = ({title, children}: {title: string, children: JSX.Element[]}) => {
     const [showDropDown, setShowDropDown] = React.useState(false);
     
     return (
