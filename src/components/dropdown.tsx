@@ -5,7 +5,7 @@ const Dropdown = ({title, children}: {title: string, children: JSX.Element[]}) =
     const [showDropDown, setShowDropDown] = React.useState(false);
     
     return (
-        <div className="border shadow-lg">
+        <div className="border shadow-lg mb-5">
             <div className="bg-gray-300 p-2 flex justify-between">
                 <h3 className="font-medium">{title ?? "undefined title"}</h3>
                 <button 
@@ -15,8 +15,10 @@ const Dropdown = ({title, children}: {title: string, children: JSX.Element[]}) =
                 </button>
             </div>
             {showDropDown && 
-                <div className="p-2">
-                    <p>{children ?? <i className="text-gray-400 text-sm">No fields added yet</i>}</p>
+                <div className="p-2" id="Dropdown">
+                    <div className="mb-2" id="DropdownRow">
+                        {children ?? <i className="text-gray-400 text-sm">No fields added yet</i>}
+                    </div>
                     <button className="hover:text-green-400">Add Item</button>
                 </div>
             }

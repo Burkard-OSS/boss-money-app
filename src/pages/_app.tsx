@@ -1,6 +1,8 @@
 import "../../styles/globals.css";
 import type { AppProps } from "next/app";
-import {version} from '../../package.json';
+import packageInfo from '../../package.json';
+
+const version = packageInfo?.version;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             Open Source project created for the 2021 Hacktoberfest.
           </a>
         </span>
-        <span className="absolute right-2 text-xs text-gray-500">Version {version}</span>
+        <span className="absolute right-2 text-xs text-gray-500 bottom-1 md:bottom-auto">Version {version}</span>
       </footer>
     </div>
   );
