@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor, ReactPortal } from "react";
+import React from "react";
 
 // Possible actions
 export enum actionTypes {
@@ -29,7 +29,7 @@ export const BudgetContextWrapper = ({
   };
 
   // Handles the data changes
-  const reducer = (data, action) => {
+  const reducer = (data: any, action: any) => {
     let actionType: actionTypes = action.type;
 
     switch (actionType) {
@@ -42,16 +42,18 @@ export const BudgetContextWrapper = ({
         newData[action.payload] = [];
         return newData;
      case "EDIT_CATEGORY":
-         if(data[action.payload.oldTitle] !== data[action.payload.newTitle]){
+         if(data[action.payload.oldTitle] !== data[action.payload.newTitle]) {
             const newData = {...data}
-            Object.defineProperty(
-                newData, 
-                action.payload.newTitle, 
+           Object.defineProperty(
+                newData,
+                action.payload.newTitle,
+                // @ts-ignore
                 Object.getOwnPropertyDescriptor(newData, action.payload.oldTitle)
             )
             delete newData[action.payload.oldTitle];
             return newData;
          }
+         return data;
       default:
         return data;
     }

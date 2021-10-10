@@ -12,13 +12,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <main className="pb-2">
           <Component {...pageProps} />
         </main>
-        <footer className="absolute bottom-0 w-full p-5 bg-gray-700 text-white text-center">
+        <footer
+          className="absolute bottom-0 w-full p-5 bg-gray-700 text-white text-center">
           <span className="text-gray-400 text-sm">
             <a href="https://github.com/Burkard-OSS/boss-money-app">
               Open Source project created for the 2021 Hacktoberfest.
             </a>
           </span>
-          <span className="absolute right-2 text-xs text-gray-500 bottom-1 md:bottom-auto">
+          <span
+            className="absolute right-2 text-xs text-gray-500 bottom-1 md:bottom-auto">
             Version {version}
           </span>
         </footer>
@@ -26,4 +28,5 @@ function MyApp({ Component, pageProps }: AppProps) {
     </BudgetContextWrapper>
   );
 }
+
 export default MyApp;

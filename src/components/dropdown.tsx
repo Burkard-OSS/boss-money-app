@@ -6,19 +6,22 @@ const Dropdown = ({ title, category }: { title: string; category: any }) => {
   const [showDropDown, setShowDropDown] = React.useState(false);
   const [showEditTitle, setShowEditTitle] = React.useState(false);
   const [flexTitleValue, setFlexTitleValue] = React.useState(title);
-  const {state, dispatch} = useBudgetContext();
+  // @ts-ignore
+  const { state, dispatch } = useBudgetContext();
 
   const handleSaveTitle = () => {
     // update global state
-    dispatch({
-        type: 'EDIT_CATEGORY',
+    dispatch(
+      {
+        type: "EDIT_CATEGORY",
         payload: {
-            oldTitle: title,
-            newTitle: flexTitleValue
+          oldTitle: title,
+          newTitle: flexTitleValue
         }
-    })
-    setShowEditTitle(false)
-  }
+      }
+    );
+    setShowEditTitle(false);
+  };
 
   return (
     <div className="border shadow-lg mb-5">
@@ -34,8 +37,9 @@ const Dropdown = ({ title, category }: { title: string; category: any }) => {
               }}
             />
             <button
-                onClick={()=>handleSaveTitle()}
-            >Save</button>
+              onClick={() => handleSaveTitle()}
+            >Save
+            </button>
           </>
         ) : (
           <h3 className="font-medium" onClick={() => setShowEditTitle(true)}>
@@ -50,7 +54,7 @@ const Dropdown = ({ title, category }: { title: string; category: any }) => {
         <div className="p-2" id="Dropdown">
           <div className="mb-2" id="DropdownRow">
             {category.length ? (
-              category.map((item) => (
+              category.map((item: any) => (
                 <DropdownField item={item} key={item.title} />
               ))
             ) : (
