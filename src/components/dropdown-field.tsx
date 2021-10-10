@@ -6,7 +6,7 @@ const DropdownField = ({
   item: {title: string, price: number}
 }) => {
   return (
-    <div className="p-2 border-b-1">
+    <div className="border-b-2 border-opacity-50 pb-1">
         <div className="text-gray-900 text-md flex justify-between">
           <span>{item?.title}</span>
           <span>{item?.price}</span>

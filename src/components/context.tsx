@@ -41,6 +41,17 @@ export const BudgetContextWrapper = ({
         const newData = {...data}
         newData[action.payload] = [];
         return newData;
+     case "EDIT_CATEGORY":
+         if(data[action.payload.oldTitle] !== data[action.payload.newTitle]){
+            const newData = {...data}
+            Object.defineProperty(
+                newData, 
+                action.payload.newTitle, 
+                Object.getOwnPropertyDescriptor(newData, action.payload.oldTitle)
+            )
+            delete newData[action.payload.oldTitle];
+            return newData;
+         }
       default:
         return data;
     }
