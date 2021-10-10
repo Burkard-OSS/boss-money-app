@@ -1,52 +1,16 @@
-import React, { useMemo, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
 
 import Navigation from "../components/navigation";
+import useBudgetContext from "../components/context";
 
 const Dropdown = dynamic(() => import("../components/dropdown"));
 const DropdownField = dynamic(() => import("../components/dropdown-field"));
 
-enum actionTypes {
-  ADD_CATEGORY = "ADD_CATEGORY",
-  ADD_ITEM = "ADD_ITEM",
-  EDIT_CATEGORY = "EDIT_CATEGORY",
-  EDIT_ITEM = "EDIT_ITEM",
-  REMOVE_CATEGORY = "REMOVE_CATEGORY",
-  REMOVE_ITEM = "REMOVE_ITEM",
-}
-
-const data = {
-  Income: [
-    {
-      title: "Job",
-      price: 8000,
-    },
-  ],
-};
-
-const reducer = (data, action) => {
-  let actionType: actionTypes = action.type;
-
-  switch (actionType) {
-    case "ADD_CATEGORY":
-      if (data[action.payload.title] || !action.payload.title) {
-        console.warn(`Category ${action.payload.title} already exists.`);
-        return data;
-      }
-      data[action.payload.title] = [];
-      return data;
-    default:
-      return data;
-  }
-};
-
-const CategorySection = ({title, category}) => {
-  console.log('title', title);
-  console.log('category', category)
-
+const CategorySection = ({ title, category }) => {
   return (
     <Dropdown title={title}>
       {category.map((item) => (
@@ -57,7 +21,8 @@ const CategorySection = ({title, category}) => {
 };
 
 const Home: NextPage = () => {
-  const [state, dispatch] = useReducer(reducer, data);
+
+  const {state, dispatch} = useBudgetContext();
 
   return (
     <>
@@ -73,8 +38,13 @@ const Home: NextPage = () => {
         {Object.entries(state).map(([title, category]) => (
           <CategorySection key={title} title={title} category={category} />
         ))}
-        
-        <button>Add Category</button>
+
+        <button onClick={() => {
+          return dispatch({
+            type: 'ADD_CATEGORY',
+            payload: 'New Category'
+          })
+        }}>Add Category</button>
       </div>
     </>
   );
